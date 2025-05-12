@@ -2,6 +2,9 @@ import React, { useContext, useState } from "react";
 import { MdOutlineAdd } from "react-icons/md";
 import { AppContext } from "../context/AppContext";
 import ExpenseIncomeChart from './ExpenseIncomeChart'
+import { IoMdAddCircle } from "react-icons/io";
+import { CiCalendarDate } from "react-icons/ci";
+
 
 const Transactions = () => {
 
@@ -23,7 +26,7 @@ const Transactions = () => {
   return (
     <div className="grid lg:grid-cols-2 mt-5 gap-4">
       <form onSubmit={ handleSubmit } className="bg-[#2f2f2f] w-full rounded-lg p-4 text-gray-300">
-        <p className="text-xl text-white">Add Transactions</p>
+        <p className="text-xl text-white flex items-center"><IoMdAddCircle className='inline h-5 w-5 text-violet-600 mr-1' />Add Transactions</p>
         <div className="grid sm:grid-cols-2 sm:gap-6 mt-2">
           <div>
             <p className="text-sm">Type</p>
@@ -147,7 +150,7 @@ const Transactions = () => {
             required
           ></textarea>
         </div>
-        <button className="w-full py-2 bg-violet-600 text-white cursor-pointer rounded-md">
+        <button className="w-full py-2 bg-violet-600 text-white cursor-pointer rounded-md flex items-center justify-center">
           <MdOutlineAdd className="inline w-5 h-5" /> Add Transaction
         </button>
       </form>

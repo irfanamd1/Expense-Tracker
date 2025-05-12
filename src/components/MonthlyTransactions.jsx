@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/AppContext'
+import { GrTransaction } from "react-icons/gr";
+import { CiCalendarDate } from "react-icons/ci";
 
 const MonthlyTransactions = () => {
   const { data } = useContext(AppContext)
@@ -14,8 +16,8 @@ const MonthlyTransactions = () => {
       <div className="bg-[#2f2f2f] w-full rounded-lg p-4 text-gray-300">
         <div className='grid grid-cols-1 gap-3 sm:flex md:gap-0 sm:items-center sm:justify-between'>
           <div className='flex items-center gap-2'>
-            <p className='text-xl text-white'>
-              Monthly Transactions - ({new Date().toLocaleString('default', { month: 'long' })})
+            <p className='text-xl text-white flex items-center'>
+              <GrTransaction className='inlinne w-5 h-5 mr-2 text-violet-600' />Monthly Transactions - ({new Date().toLocaleString('default', { month: 'long' })})
             </p>
             {data.length > 0 && (
               <div className='w-8 h-8 bg-[#393939] rounded-md flex items-center justify-center'>
@@ -65,10 +67,10 @@ const MonthlyTransactions = () => {
         </div>
       </div>
 
-      <div className="bg-[#2f2f2f] w-full rounded-lg p-4 text-gray-300 ">
-        <p className="text-white">Today Transactions - ({new Date().toISOString().split('T')[0]})</p>
+      <div className="bg-[#2f2f2f] w-full rounded-lg p-4 text-gray-300 h-fit">
+        <p className="text-white text-xl flex items-center"><CiCalendarDate className='w-6 h-6 inline text-violet-600 mr-2' />Today Transactions - ({new Date().toISOString().split('T')[0]})</p>
         <div className="grid sm:grid-cols-2 gap-3 lg:grid-cols-1 lg:gap-0">
-          <div className="mt-5 bg-[#393939] rounded-md w-full h-[150px] p-4">
+          <div className="mt-5 bg-[#393939] rounded-md w-full p-4">
             <p>Today's total Expense</p>
             <p className="text-white mt-4">₹&nbsp;
               {
@@ -79,7 +81,7 @@ const MonthlyTransactions = () => {
               }
             </p>
           </div>
-          <div className="mt-5 bg-[#393939] rounded-md w-full h-[150px] p-4">
+          <div className="mt-5 bg-[#393939] rounded-md w-full p-4">
             <p>Today's total Income</p>
             <p className="text-white mt-4">₹&nbsp;
               {
