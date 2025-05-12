@@ -147,7 +147,7 @@ const ExpenseIncomeChart = ({ data }) => {
       </div>
 
       {hasData && (
-        <div className="h-72">
+        <div className="h-64">
           <Doughnut data={chartData} options={options} />
         </div>
       )}
