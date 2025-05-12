@@ -7,7 +7,6 @@ import {
   Legend,
   ArcElement,
 } from 'chart.js';
-import { RiDonutChartFill } from "react-icons/ri";
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement);
 
@@ -115,8 +114,8 @@ const ExpenseIncomeChart = ({ data }) => {
 
   return (
     <div className="p-4 bg-[#2f2f2f] rounded-md h-[430px]">
-      <p className="text-xl mb-4 text-white flex items-center">
-        <RiDonutChartFill className='w-5 h-5 inline text-violet-600 mr-2' />{selectedType === 'expense' ? 'Expense' : 'Income'} Summary for {selectedDate}
+      <p className="text-xl mb-4 text-white">
+        {selectedType === 'expense' ? 'Expense' : 'Income'} Summary for {selectedDate}
       </p>
 
       <div className="grid items-center gap-4 mb-4 sm:flex sm:justify-between sm:gap-4">

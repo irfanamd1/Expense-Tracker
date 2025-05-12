@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import { GrTransaction } from "react-icons/gr";
-import { CiCalendarDate } from "react-icons/ci";
 
 const MonthlyTransactions = () => {
   const { data } = useContext(AppContext)
@@ -68,7 +67,7 @@ const MonthlyTransactions = () => {
       </div>
 
       <div className="bg-[#2f2f2f] w-full rounded-lg p-4 text-gray-300 h-fit">
-        <p className="text-white text-xl flex items-center"><CiCalendarDate className='w-6 h-6 inline text-violet-600 mr-2' />Today Transactions - ({new Date().toISOString().split('T')[0]})</p>
+        <p className="text-white text-xl">Today Transactions - ({new Date().toISOString().split('T')[0]})</p>
         <div className="grid sm:grid-cols-2 gap-3 lg:grid-cols-1 lg:gap-0">
           <div className="mt-5 bg-[#393939] rounded-md w-full p-4">
             <p>Today's total Expense</p>

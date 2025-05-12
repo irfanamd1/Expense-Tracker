@@ -3,8 +3,6 @@ import { MdOutlineAdd } from "react-icons/md";
 import { AppContext } from "../context/AppContext";
 import ExpenseIncomeChart from './ExpenseIncomeChart'
 import { IoMdAddCircle } from "react-icons/io";
-import { CiCalendarDate } from "react-icons/ci";
-
 
 const Transactions = () => {
 
