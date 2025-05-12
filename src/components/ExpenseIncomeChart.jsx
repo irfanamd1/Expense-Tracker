@@ -78,7 +78,7 @@ const ExpenseIncomeChart = ({ data }) => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    cutout: '90%',
+    cutout: '80%',
     plugins: {
       legend: {
         position: 'top',
