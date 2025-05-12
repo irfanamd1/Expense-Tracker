@@ -44,23 +44,23 @@ const ExpenseIncomeChart = ({ data }) => {
       // 'Rental Income': '#FF9F40',
       // 'Government Benefits': '#3CB371',
       // 'Gifts & Other': '#CFCFCF',
-          'Housing': '#FF6384',                // Soft Red
-    'Transportation': '#36A2EB',        // Bright Blue
-    'Food': '#FFCE56',                  // Warm Yellow
-    'Health': '#4BC0C0',                // Aqua
-    'Insurance': '#9966FF',             // Purple
-    'Debt Payments': '#FF9F40',         // Orange
-    'Entertainment': '#CFCFCF',         // Light Gray
-    'Personal & Family': '#FFCD56',     // Light Gold
-    'Savings & Investments': '#6495ED', // Cornflower Blue
-    'Miscellaneous': '#9370DB',         // Medium Purple
+              'Housing': '#FF6384',              
+    'Transportation': '#36A2EB',     
+    'Food': '#FDB45C',                
+    'Health': '#4BC0C0',              
+    'Insurance': '#9966FF',            
+    'Debt Payments': '#FF9F40',         
+    'Entertainment': '#8B008B',         
+    'Personal & Family': '#2E8B57',   
+    'Savings & Investments': '#6495ED',
+    'Miscellaneous': '#DAA520',        
 
-    'Salary/Wages': '#3CB371',          // Medium Sea Green
-    'Business Income': '#F08080',       // Light Coral
-    'Investments': '#00CED1',           // Dark Turquoise
-    'Rental Income': '#ADFF2F',         // Green Yellow
-    'Government Benefits': '#DC143C',   // Crimson
-    'Gifts & Other': '#20B2AA',
+    'Salary/Wages': '#3CB371',     
+    'Business Income': '#F08080',     
+    'Investments': '#00CED1',         
+    'Rental Income': '#ADFF2F',         
+    'Government Benefits': '#DC143C',   
+    'Gifts & Other': '#FF4500',
     };
     return colors[category] || '#666';
   };
