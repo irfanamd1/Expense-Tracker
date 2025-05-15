@@ -14,13 +14,14 @@ const AppContextProvider = ({ children }) => {
 
   const [description, setDescription] = useState("");
 
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(() => Number(localStorage.getItem('total')) || 0);
 
-  const [income, setIncome] = useState(0);
+  const [income, setIncome] = useState(() => Number(localStorage.getItem('income')) || 0);
 
-  const [expense, setExpense] = useState(0);
+  const [expense, setExpense] = useState(() => Number(localStorage.getItem('expense')) || 0);
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(() => JSON.parse(localStorage.getItem('data')) || []);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,12 +38,14 @@ const AppContextProvider = ({ children }) => {
       if (Number(amount) > Number(total)) {
         toast.error("You do not have enough balance");
       } else {
-        setTotal((prev) => Number(prev) - Number(amount));
+        const updatedTotal = Number(total) - Number(amount);
+        setTotal(updatedTotal);
         if (
           new Date(date).toLocaleString("default", { month: "long" }) ===
           new Date().toLocaleString("default", { month: "long" })
         ) {
-          setExpense((prev) => Number(prev) + Number(amount));
+          const updatedExpense = Number(expense) + Number(amount);
+          setExpense(updatedExpense);
         }
         setData((prev) => [...prev, newEntry]);
 
@@ -52,12 +55,14 @@ const AppContextProvider = ({ children }) => {
         setCategory("Housing");
       }
     } else {
-      setTotal((prev) => Number(prev) + Number(amount));
+      const updatedTotal = Number(total) + Number(amount);
+      setTotal(updatedTotal);
       if (
         new Date(date).toLocaleString("default", { month: "long" }) ===
         new Date().toLocaleString("default", { month: "long" })
       ) {
-        setIncome((prev) => Number(prev) + Number(amount));
+        const updatedIncome = Number(income) + Number(amount);
+        setIncome(updatedIncome);
       }
       setData((prev) => [...prev, newEntry]);
 
@@ -71,6 +76,22 @@ const AppContextProvider = ({ children }) => {
   useEffect(() => {
     setCategory(type === "expense" ? "Housing" : "Salary/Wages");
   }, [type]);
+
+  useEffect(() => {
+    localStorage.setItem('total', total);
+  }, [total]);
+
+  useEffect(() => {
+    localStorage.setItem('income', income);
+  }, [income]);
+
+  useEffect(() => {
+    localStorage.setItem('expense', expense);
+  }, [expense]);
+
+  useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(data));
+  }, [data]);
 
   const value = {
     type,
