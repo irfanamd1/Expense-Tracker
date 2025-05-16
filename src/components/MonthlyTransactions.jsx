@@ -8,10 +8,6 @@ const MonthlyTransactions = () => {
   
   const [transaction, setTransaction] = useState('All')
 
-  const options = { timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit' };
-  const dateParts = new Intl.DateTimeFormat('en-CA', options).formatToParts(new Date());
-  const dateIST = `${dateParts.find(p => p.type === 'year').value}-${dateParts.find(p => p.type === 'month').value}-${dateParts.find(p => p.type === 'day').value}`;
-
   const filteredData = transaction === 'All'
     ? data
     : data.filter(item => item.type === transaction.toLowerCase())
