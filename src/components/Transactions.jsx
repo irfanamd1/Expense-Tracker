@@ -18,7 +18,8 @@ const Transactions = () => {
     description,
     setDescription,
     data,
-    handleSubmit
+    handleSubmit,
+    dateIST
   } = useContext(AppContext);      
 
   return (
@@ -134,7 +135,7 @@ const Transactions = () => {
               required
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              max={new Date().toISOString().split("T")[0]} 
+              max={ dateIST } 
             />
           </div>
         </div>

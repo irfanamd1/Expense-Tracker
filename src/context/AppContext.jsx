@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 export const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
+
   const [type, setType] = useState("expense");
 
   const [category, setCategory] = useState("Housing");
@@ -22,6 +23,10 @@ const AppContextProvider = ({ children }) => {
 
   const [data, setData] = useState(() => JSON.parse(localStorage.getItem('data')) || []);
 
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const options = { timeZone, year: 'numeric', month: '2-digit', day: '2-digit' };
+  const dateParts = new Intl.DateTimeFormat('en-CA', options).formatToParts(new Date());
+  const dateIST = `${dateParts.find(p => p.type === 'year').value}-${dateParts.find(p => p.type === 'month').value}-${dateParts.find(p => p.type === 'day').value}`
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,7 +79,7 @@ const AppContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    setCategory(type === "expense" ? "Housing" : "Salary/Wages");
+    setCategory(type === "expense" ? "Housing" : "Salary/Wages");        
   }, [type]);
 
   useEffect(() => {
@@ -113,6 +118,7 @@ const AppContextProvider = ({ children }) => {
     data,
     setData,
     handleSubmit,
+    dateIST
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

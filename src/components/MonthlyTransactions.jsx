@@ -3,7 +3,9 @@ import { AppContext } from '../context/AppContext'
 import { GrTransaction } from "react-icons/gr";
 
 const MonthlyTransactions = () => {
-  const { data } = useContext(AppContext)
+
+  const { data, dateIST } = useContext(AppContext)
+
   const [transaction, setTransaction] = useState('All')
 
   const filteredData = transaction === 'All'
@@ -67,7 +69,7 @@ const MonthlyTransactions = () => {
       </div>
 
       <div className="bg-[#2f2f2f] w-full rounded-lg p-4 text-gray-300 h-fit">
-        <p className="text-white text-xl">Today Transactions - ({new Date().toISOString().split('T')[0]})</p>
+        <p className="text-white text-xl">Today Transactions - ({ dateIST })</p>
         <div className="grid sm:grid-cols-2 gap-3 lg:grid-cols-1 lg:gap-0">
           <div className="mt-5 bg-[#393939] rounded-md w-full p-4">
             <p>Today's total Expense</p>
@@ -75,7 +77,7 @@ const MonthlyTransactions = () => {
               {
                 data.filter(item =>
                   item.type === 'expense' &&
-                  item.date === new Date().toISOString().split("T")[0]
+                  item.date === dateIST
                 ).reduce((acc, curr) => acc + Number(curr.amount), 0)
               }
             </p>
@@ -86,7 +88,7 @@ const MonthlyTransactions = () => {
               {
                 data.filter(item =>
                   item.type === 'income' &&
-                  item.date === new Date().toISOString().split("T")[0]
+                  item.date === dateIST
                 ).reduce((acc, curr) => acc + Number(curr.amount), 0)
               }
             </p>

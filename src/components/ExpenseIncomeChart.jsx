@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -7,12 +7,18 @@ import {
   Legend,
   ArcElement,
 } from 'chart.js';
+import { AppContext } from '../context/AppContext';
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement);
 
 const ExpenseIncomeChart = ({ data }) => {
+
+  const { dateIST } = useContext(AppContext);
+
   const [selectedType, setSelectedType] = useState('expense');
-  const [selectedDate, setSelectedDate] = useState(() => new Date().toISOString().split('T')[0]);
+
+  const [selectedDate, setSelectedDate] = useState(() => dateIST);
+
   const [chartData, setChartData] = useState(null);
 
   const expenseCategories = [
@@ -157,7 +163,7 @@ const ExpenseIncomeChart = ({ data }) => {
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
             className="px-2 py-1 border border-gray-300 outline-none rounded ml-auto text-white"
-            max={new Date().toISOString().split("T")[0]} 
+            max={ dateIST } 
           />
         </div>
       </div>
